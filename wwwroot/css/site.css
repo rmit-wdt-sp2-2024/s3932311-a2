@@ -1,0 +1,73 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.welcome-block {
+    text-align: center;
+    margin-top: 5rem;
+}
+
+.line {
+    width: 75%;
+    border-top: 1px solid grey;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+.login-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    text-decoration: none;
+    background-color: dodgerblue;
+    border-radius: 4px;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+header nav ul li {
+display: inline;
+margin-right: 15px;
+}
+
+header nav ul li a {
+text-decoration: none;
+color: #007bff;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}

@@ -1,0 +1,44 @@
+﻿<h1>My Statements</h1>
+
+<form asp-action="Index" method="post">
+    <div class="form-group">
+        <label for="accountNumber">Select Account:</label>
+        <select name="accountNumber" class="form-control">
+            @foreach (var account in ViewBag.Accounts as IEnumerable<MvcMCBA.Models.Account>)
+            {
+                <option value="@account.AccountNumber">@account.AccountType - @account.AccountNumber</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">View Statements</button>
+</form>
+
+@if (ViewBag.Transactions != null)
+{
+    <div>
+        <h4>Account Number: @ViewBag.AccountNumber</h4>
+        <h4>Current Balance: @ViewBag.Balance.ToString()</h4>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Transaction Time</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var transaction in ViewBag.Transactions as IEnumerable<MvcMCBA.Models.Transaction>)
+            {
+                <tr>
+                    <td>@transaction.TransactionTimeUtc.ToLocalTime()</td>
+                    <td>@transaction.TransactionType</td>
+                    <td>@transaction.Amount.ToString()</td>
+                    <td>@transaction.Comment</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

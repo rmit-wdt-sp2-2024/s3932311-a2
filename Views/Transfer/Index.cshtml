@@ -1,0 +1,62 @@
+﻿@model MvcMCBA.Models.Transaction
+
+<h1>@ViewBag.CustomerName - Transfer</h1>
+
+<form asp-action="Index" method="post" onsubmit="return confirmTransfer()">
+    <div class="form-group">
+        <label for="accountNumber">Transfer From:</label>
+        <select asp-for="AccountNumber" class="form-control">
+            @foreach (var account in ViewBag.Accounts as IEnumerable<MvcMCBA.Models.Account>)
+            {
+                <option value="@account.AccountNumber">
+                    @account.AccountNumber:
+                    @if (account.AccountType == "C")
+                    {
+                        @:Checking
+                    }
+                    else
+                    {
+                        @:Savings
+                    }
+                </option>
+            }
+        </select>
+        <span asp-validation-for="AccountNumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DestinationAccountNumber">Transfer To (4-Digit Account Number):</label>
+        <input asp-for="DestinationAccountNumber" type="number" class="form-control"/>
+        <span asp-validation-for="DestinationAccountNumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Amount">Amount:</label>
+        <input asp-for="Amount" class="form-control" />
+        <span asp-validation-for="Amount" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Comment">Comment (30 Characters Max):</label>
+        <textarea asp-for="Comment" class="form-control"></textarea>
+        <span asp-validation-for="Comment" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Transfer</button>
+</form>
+
+<script type="text/javascript">
+    function confirmTransfer() {
+        var accountNumber = document.getElementById('AccountNumber').value;
+        var amount = document.getElementById('Amount').value;
+        var comment = document.getElementById('Comment').value;
+        var destinationAccountNumber = document.getElementById('DestinationAccountNumber').value;
+
+        var message = "Account Number: " + accountNumber + "\n" +
+            "Amount: $" + amount + "\n" +
+            "Comment: " + comment + "\n\n" +
+            "Destination Account Number: " + destinationAccountNumber + "\n" +
+            "Do you want to confirm Transfer?";
+        return confirm(message);
+    }
+</script>

@@ -1,0 +1,16 @@
+﻿@model MvcMCBA.Models.Customer
+
+<h1>My Profile</h1>
+
+<div>
+    <p><style="font-weight: bold">Name:</p><p> @Model.Name</p>
+    <p><style="font-weight: bold">TFN:</p><p> @Model.TFN</p>
+    <p><style="font-weight: bold">Address:</p><p> @Model.Address</p>
+    <p><style="font-weight: bold">City:</p><p> @Model.City</p>
+    <p><style="font-weight: bold">State:</p><p> @Model.State</p>
+    <p><style="font-weight: bold">Postcode:</p><p> @Model.Postcode</p>
+    <p><style="font-weight: bold">Mobile:</p><p> @Model.Mobile</p>
+</div>
+
+<a asp-action="Edit" class="btn btn-primary">Edit Profile</a>
+<a asp-controller="ChangePassword" asp-action="Index" class="btn btn-secondary">Change Password</a>

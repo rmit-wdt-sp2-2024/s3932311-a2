@@ -1,0 +1,32 @@
+﻿@model IEnumerable<MvcMCBA.Models.Account>
+
+<h1>Welcome @ViewBag.CustomerName! - My Accounts</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Account Number</th>
+            <th>Account Type</th>
+            <th>Balance</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var account in Model)
+        {
+            <tr>
+                <td>@account.AccountNumber</td>
+                <td>
+                    @if (account.AccountType == "C")
+                    {
+                        @:Checking
+                    }
+                    else
+                    {
+                        @:Savings
+                    }
+                </td>
+                <td>$@account.Transactions.Sum(t => t.Amount).ToString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
